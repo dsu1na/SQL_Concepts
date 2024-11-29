@@ -1,0 +1,76 @@
+/*
+There are the following constrains
+
+1. NOT NULL
+2. UNIQUE
+3. PRIMARY KEY
+4. CHECK
+5. DEFAULT
+6. FOREIGN KEY
+*/
+
+
+-- NOT NULL Constraint
+
+CREATE TABLE IF NOT EXISTS employee (
+    ID INT NOT NULL,
+    NAME VARCHAR(20) NOT NULL,
+    ADDRESS VARCHAR(30)
+);
+
+
+-- UNIQUE constraint
+
+CREATE TABLE IF NOT EXISTS employee (
+    ID INT UNIQUE,
+    NAME VARCHAR(20) NOT NULL,
+    MOBILE INT UNIQUE,
+    ADDRESS VARCHAR(30)
+);
+
+
+-- PRIMARY KEY Constraint
+
+CREATE TABLE IF NOT EXISTS employee (
+    ID INT,
+    NAME VARCHAR(20),
+    ADDRESS VARCHAR(30),
+
+    PRIMARY KEY (ID, NAME)
+);
+
+
+-- FOREIGN KEY Constraint
+
+CREATE TABLE department (
+    ID INT,
+    DEPT_NAME VARCHAR(20) NOT NULL,
+
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE employee (
+    ID INT NOT NULL,
+    NAME  VARCHAR(20) NOT NULL,
+    ADDRESS VARCHAR(30),
+    DEPT_ID INT,
+
+    FOREIGN KEY (DEPT_ID) REFERENCES department(ID)
+);
+
+
+-- CHECK Constraint
+CREATE TABLE employee (
+    ID INT,
+    NAME VARCHAR(20) CHECK(NAME != "Saloni"),
+    ADDRESS VARCHAR(30)
+);
+
+
+-- DEFAULT Constraint
+
+CREATE TABLE employee (
+    ID INT,
+    NAME VARCHAR(20) DEFAULT "NEW USER",
+    ADDRESS VARCHAR(30)
+);
